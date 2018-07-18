@@ -9,4 +9,12 @@ echo "Code compiled successfully, copying images to bin folder"
 mkdir -p $CWD/output_bin
 echo "$top_commit"=$CWD/output_bin/commit_tracker.txt
 cp -fr ffmpeg* $CWD/output_bin
+
+echo "Update output_bin in github for testing"
+git config --global credential.helper cache
+git config --global credential.helper 'cache --timeout=7200'
+git add ./output_bin
+git commit -m "Compilation passed successfully with $top_commit as ToT" -s --no -edit
+gitpush origin master
 touch "$CWD/output_bin/build_done.txt"
+echo "All done"
