@@ -7,7 +7,7 @@ make -j8
 top_commit=$(git log --pretty=format:"%H" -- . ":(exclude,icase)output_bin")
 echo "Code compiled successfully, copying images to bin folder"
 mkdir -p $CWD/output_bin
-echo "$top_commit"=$CWD/output_bin/commit_tracker.txt
+echo "$top_commit" > $CWD/commit_tracker.txt
 cp -fr ffmpeg* $CWD/output_bin
 
 echo "Update output_bin in github for testing"
